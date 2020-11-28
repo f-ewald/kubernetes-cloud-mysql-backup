@@ -21,6 +21,9 @@ RUN apk -v --update add \
     pip3 install --upgrade six awscli s3cmd python-magic && \
     rm /var/cache/apk/*
 
+# Set signature version for minio
+RUN aws configure set default.s3.signature_version s3v4
+
 # Set Default Environment Variables
 ENV TARGET_DATABASE_PORT=3306
 ENV SLACK_ENABLED=false
